@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import getWeather from './axios/getWeather';
 
+
+export const init = async (setelement: React.Dispatch<React.SetStateAction<Promise<any> | undefined>>) => {
+    const weatherData= await getWeather('Marseille');
+    console.log('weatherdata: ',weatherData)
+    await setelement(weatherData)  };
+
+
 function App() {
 
 
   const [weather, setWeather] = useState<Promise<any>>();
 
-  const init = async () => {
-    const weatherData= await getWeather('Marseille');
-    console.log('weatherdata: ',weatherData)
-    await setWeather(weatherData)
-    console.log('weather: ',weather)
-  };
+   
 
   useEffect(() => {
-   init()
+   init(setWeather)
    console.log('weather: ',weather)
   }, []);
 
