@@ -1,20 +1,25 @@
-import getWeather from '../axios/getWeather';
-import '@testing-library/jest-dom';
-import axios from 'axios'
+import "@testing-library/jest-dom";
+import { mocked } from "ts-jest/utils";
+import axios from "axios";
 
-jest.mock('axios');
+//functions to test
+import getWeather from "../axios/getWeather";
 
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+jest.mock("axios");
 
-it('Calls the getWeather function', async () => {
-  const expectedResult:any = { data:'weather data result'};
+describe("init weather", () => {
+  const mockedAxios = axios as jest.Mocked<typeof axios>;
 
+  beforeEach(() => mocked(axios).mockClear());
 
-  mockedAxios.get.mockReturnValueOnce(expectedResult);
+  it("Calls the getWeather function", async () => {
+    const expectedResult: any = { data: "weather data result" };
 
-  
-  const result = await getWeather('marseille');
+    mockedAxios.get.mockReturnValueOnce(expectedResult);
 
-  expect(mockedAxios.get).toHaveBeenCalled();
-  expect(result).toEqual('weather data result');
+    const result = await getWeather("marseille");
+
+    expect(mockedAxios.get).toHaveBeenCalled();
+    expect(result).toEqual("weather data result");
+  });
 });
