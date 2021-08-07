@@ -76,7 +76,7 @@ const Header: React.FC<IProps> = ({ setWeather}) => {
   const classes = useStyles();
 
   const chooseCity = async (e: any) => {
-    console.log("event: ", e.target.city.value);
+    console.log("event city : ", e.target.city.value);
     const newCityMeteo= await getWeather(e.target.city.value);
     await setWeather(newCityMeteo)
  
@@ -95,7 +95,7 @@ const Header: React.FC<IProps> = ({ setWeather}) => {
             Meteo News
           </Typography>
           <div className={classes.search}>
-          <form className={classes.root}  autoComplete="off" onSubmit={handleSubmit}>
+          <form className={classes.root}  autoComplete="off" onSubmit={handleSubmit} data-testid="form">
 
             <div className={classes.searchIcon}>
               <SearchIcon />
