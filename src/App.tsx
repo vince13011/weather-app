@@ -6,7 +6,7 @@ import Main from "./Main";
 import { IWeather } from "./interfaces/interfaces";
 
 function App() {
-  const [weather, setWeather] = useState<Promise<IWeather | undefined>>();
+  const [weather, setWeather] = useState<Promise<IWeather>|undefined>();
 
   useEffect(() => {
     const data = getWeather("Marseille")

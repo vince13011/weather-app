@@ -106,6 +106,7 @@ const Header: React.FC<IProps> = ({ setWeather}) => {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              data-testid="city_input"
               name="city"
               inputProps={{ "aria-label": "search" }}
             />
