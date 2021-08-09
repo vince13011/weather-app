@@ -2,12 +2,12 @@ import "@testing-library/jest-dom";
 import { mocked } from "ts-jest/utils";
 import axios from "axios";
 
-//functions to test
+//functions for the test
 import getWeather from "../axios/getWeather";
 
 jest.mock("axios");
 
-describe("init weather", () => {
+describe("init state weather", () => {
   const mockedAxios = axios as jest.Mocked<typeof axios>;
 
   beforeEach(() => mocked(axios).mockClear());
